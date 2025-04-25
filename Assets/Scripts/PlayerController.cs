@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
 
 
     private Rigidbody2D _rigidBody;
-    private Animator _animator;
+    public Animator _animator;
     private SpriteRenderer _spriteRenderer;
 
     public bool isJumping;
@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
 
         Vector2 movement = new Vector2(Input.GetAxis("Horizontal"), 0);
         transform.Translate(horizontal * Time.deltaTime * MoveSpeed, 0, 0);
-        //if (isJumping) _rigidBody.AddForce(Vector2.up * JumpForce);
+       
         _animator.SetFloat("Horizontal", Mathf.Abs(horizontal));
         if (horizontal > 0)
             _spriteRenderer.flipX = false;
