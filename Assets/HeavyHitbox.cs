@@ -1,9 +1,7 @@
-using System;
 using UnityEngine;
 
-public class PlayerHitbox : MonoBehaviour
+public class HeavyHitbox : MonoBehaviour
 {
-
 	public GameObject attackHitbox;
 
 	public void EnableHitbox()
@@ -16,5 +14,3 @@ public class PlayerHitbox : MonoBehaviour
 		attackHitbox.SetActive(false);
 	}
 }
-	
-	

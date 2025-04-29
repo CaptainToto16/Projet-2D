@@ -8,8 +8,14 @@ public class PlayerAttack : MonoBehaviour
 	public float attackCooldown = 0.5f;
 	private float attackTimer = 0f;
 
+	public float heavyAttackCooldown = 10f;
+	private float heavyAttackTimer = 0f;
+	private bool isHeavyAttacking = false;
+
 	private PlayerController playerMovement;
-	
+
+
+
 	void Start()
 	{
 		playerMovement = GetComponent<PlayerController>();
@@ -23,7 +29,12 @@ public class PlayerAttack : MonoBehaviour
 			Attack();
 		}
 
-		
+		if (Input.GetMouseButtonDown(1) && !isHeavyAttacking)
+		{
+			HeavyAttack();
+		}
+
+
 		if (isAttacking)
 		{
 			attackTimer += Time.deltaTime;
@@ -37,18 +48,43 @@ public class PlayerAttack : MonoBehaviour
 					playerMovement.enabled = true;
 			}
 		}
+
+		if (isHeavyAttacking)
+		{
+			heavyAttackTimer += Time.deltaTime;
+			if (heavyAttackTimer >= heavyAttackCooldown)
+			{
+				isHeavyAttacking = false;
+				heavyAttackTimer = 0f;
+				if (playerMovement != null)
+					playerMovement.enabled = true;
+			}
+		}
 	}
+
 	void Attack()
 	{
 		isAttacking = true;
 
 		if (_animator != null)
-			_animator.SetTrigger("PlayerAttack");
+			_animator.SetTrigger("Attack");
 
 		if (playerMovement != null)
 			playerMovement.enabled = false;
 	}
+
+	void HeavyAttack()
+	{
+		isHeavyAttacking = true;
+
+		if (_animator != null)
+			_animator.SetTrigger("HeavyAttack");
+
+		if (playerMovement != null)
+		playerMovement.enabled = false;
+	}
 }
+
 
     
    
