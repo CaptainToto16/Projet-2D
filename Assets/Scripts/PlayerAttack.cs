@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.Splines;
 
@@ -8,11 +9,17 @@ public class PlayerAttack : MonoBehaviour
 	public float attackCooldown = 0.5f;
 	private float attackTimer = 0f;
 
-	public float heavyAttackCooldown = 10f;
+	public float heavyAttackCooldown = 1.3f;
 	private float heavyAttackTimer = 0f;
 	private bool isHeavyAttacking = false;
 
 	private PlayerController playerMovement;
+	[SerializeField] private float heavyAttackDuration = 1.2f;
+
+	public ParticleSystem heavyAttackFlames;
+
+
+
 
 
 
@@ -51,17 +58,13 @@ public class PlayerAttack : MonoBehaviour
 
 		if (isHeavyAttacking)
 		{
-			heavyAttackTimer += Time.deltaTime;
-			if (heavyAttackTimer >= heavyAttackCooldown)
+			heavyAttackTimer -= Time.deltaTime;
+			if (heavyAttackTimer <= 0f)
 			{
-				isHeavyAttacking = false;
-				heavyAttackTimer = 0f;
-				if (playerMovement != null)
-					playerMovement.enabled = true;
+				EndHeavyAttack();
 			}
 		}
 	}
-
 	void Attack()
 	{
 		isAttacking = true;
@@ -75,16 +78,43 @@ public class PlayerAttack : MonoBehaviour
 
 	void HeavyAttack()
 	{
+		Debug.Log("heavy");
+		heavyAttackTimer = heavyAttackDuration;
 		isHeavyAttacking = true;
+		heavyAttackTimer = heavyAttackDuration;
 
 		if (_animator != null)
 			_animator.SetTrigger("HeavyAttack");
+		_animator.SetBool("isHeavyAttacking", true);
 
 		if (playerMovement != null)
-		playerMovement.enabled = false;
+			playerMovement.enabled = false;
+
+		if (heavyAttackFlames != null)
+		{
+			heavyAttackFlames.Play();
+		}
+
+
+	}
+	public void EndHeavyAttack()
+	{
+		isHeavyAttacking = false;
+
+		if (_animator != null)
+			_animator.SetBool("isHeavyAttacking", false);
+
+		if (playerMovement != null)
+			playerMovement.enabled = true;
 	}
 }
 
 
-    
+
+
+
+
+
+
+
    

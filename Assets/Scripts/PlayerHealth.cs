@@ -2,23 +2,22 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class PlayerHealth : MonoBehaviour
 {
     public float health;
     public float MaxHealth;
     public Image healthBar;
+    public Animator animator;
+    public PlayerController playerController;
 
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
-
-
     {
         MaxHealth = health;
     }
 
-    // Update is called once per frame
+
     void Update()
     {
 
@@ -29,20 +28,33 @@ public class PlayerHealth : MonoBehaviour
 
         healthBar.fillAmount = Math.Clamp(health / MaxHealth, 0, 1);
     }
-    
 
-    public void Die()
+    public void TakeDamage(float damage)
     {
-        Invoke("RestartLevel",0);
+        health -= damage;
+        animator.SetTrigger("TakeDamage");
     }
-
-    public void RestartLevel()
+    void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+
+    public void Die()
+    {
+       playerController.enabled = false;
+
+        animator.SetTrigger("Die");
+        StartCoroutine(WaitAndRestart());
+    }
+
+    IEnumerator WaitAndRestart()
+    {
+        yield return new WaitForSeconds(3f); 
+        RestartLevel();
+    }
 }
 
 
 
-    
+

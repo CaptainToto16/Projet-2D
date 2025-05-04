@@ -104,14 +104,21 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.76666665
-    functionName: EnableHitbox
+    functionName: EnableHeavyHitbox
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 1.25
-    functionName: DisableHitbox
+    functionName: DisableHeavyHitbox
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.5166667
+    functionName: EndHeavyAttack
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

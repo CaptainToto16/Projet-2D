@@ -22,9 +22,15 @@ public class Damage : MonoBehaviour
 	{
 		if (other.gameObject.CompareTag("Player"))
 		{
-			playerHealth.health -= damage;
+			if (other.gameObject.CompareTag("Player"))
+			{
+				PlayerHealth playerHealth = other.gameObject.GetComponent<PlayerHealth>();
+				if (playerHealth != null)
+				{
+					playerHealth.TakeDamage(damage);
+				}
+			}
 		}
-
 	}
 }
     
