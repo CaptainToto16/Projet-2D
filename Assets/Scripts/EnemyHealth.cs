@@ -47,7 +47,7 @@ public class EnemyHealth : MonoBehaviour
     {
         if (animator != null)
         {
-            Debug.Log("Setting trigger BlueDeath");
+            
             animator.SetTrigger("BlueDeath");
         }
         else
