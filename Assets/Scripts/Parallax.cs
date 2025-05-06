@@ -17,7 +17,7 @@ public class Parallax : MonoBehaviour
     void Update()
     {
         float offsetX = (Target.position.x - _targetStartX) * MoveSpeed;
-        Debug.Log("Offset: " + offsetX);
+        
         transform.position = new Vector3(
             _parallaxStartPosition.x + offsetX,
             _parallaxStartPosition.y,
