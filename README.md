@@ -1,25 +1,25 @@
 # 🎮 2D Platformer Template - Unity
 
-Un **template de jeu de plateforme 2D** développé sous **Unity**, comprenant :
-- Mouvement du joueur
-- Sauts et platformes
-- Système de mobs ennemis
-- Boss avec comportement avancé
-- Système de collisions et détection de sol
-- Base extensible pour un jeu complet
-- Différents types d'attaque, heavy ou light
+A **2D platformer game template** built with **Unity**, featuring:
+- Player movement  
+- Jumping and platform navigation  
+- Enemy mob system  
+- Boss with advanced behavior  
+- Collision detection and ground check system  
+- Expandable base for a full game  
+- Multiple attack types: **light** and **heavy**
 
-## 🛠️ Technologies utilisées
+## 🛠️ Technologies Used
 
-- [Unity](https://unity.com/) (version recommandée : 2021.3 LTS ou supérieure)
+- [Unity](https://unity.com/) (recommended version: 2021.3 LTS or newer)
 - C#
-- Input System Unity (optionnel selon ton projet)
-- Tilemap 2D
+- Unity Input System (optional, depending on your setup)
+- 2D Tilemap system
 - Rigidbody2D, Collider2D
 
-## 🚀 Démarrage rapide
+## 🚀 Getting Started
 
-1. **Clone le repo** :
+1. **Clone the repository**:
 
 ```bash
-git clone https://github.com/ton-pseudo/nom-du-repo.git
+git clone https://github.com/CaptainToto16/Projet-2D
